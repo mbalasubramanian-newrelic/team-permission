@@ -1,0 +1,20 @@
+team_store_id: '123000584'
+permissions:
+  ldap:
+    app_users: []
+    groups: []
+  shell_access: false
+  vault: false
+  vpn: false
+  aws:
+    iam:
+    - accounts:
+        ids:
+        - 0123456789
+      roles:
+        predefined:
+        - NRReadOnly
+  ns1:
+    role: admin
+  pagerduty:
+    role: user
