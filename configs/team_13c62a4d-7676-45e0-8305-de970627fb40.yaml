@@ -1,0 +1,34 @@
+team_store_id: 13c62a4d-7676-45e0-8305-de970627fb40
+permissions:
+  ldap:
+    app_users: []
+    groups: []
+  shell_access: false
+  vault: false
+  vpn: false
+  aws:
+    iam:
+    - accounts:
+        ids:
+        - stg-late-shift
+      roles:
+        predefined:
+        - NRReadOnly
+  gcp:
+    rbac:
+    - projects:
+        ids:
+        - 0123456789
+        roles:
+          built-in:
+          - Editor
+  cloudflare:
+    roles:
+    - Analytics
+  mongodb:
+    role:
+    - Organization Member
+  ns1:
+    role: admin
+  pagerduty:
+    role: user
