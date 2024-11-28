@@ -1,0 +1,44 @@
+team_store_id: 1299364f-acc7-42d7-9e70-d80e5b2d5ce5
+permissions:
+  ldap:
+    app_users: []
+    groups: []
+  shell_access: false
+  vault: false
+  vpn: false
+  aws:
+    iam:
+    - accounts:
+        ids:
+        - stg-late-shift
+        - stg-my-toes
+      roles:
+        predefined:
+        - NRReadOnly
+  azure:
+    rbac:
+    - subscriptions:
+        ids:
+        - stg-late-shift
+        - stg-my-toes
+        roles:
+          built-in:
+          - Contributor
+  gcp:
+    rbac:
+    - projects:
+        ids:
+        - 0123456789
+        roles:
+          built-in:
+          - Editor
+  cloudflare:
+    roles:
+    - Analytics
+  mongodb:
+    role:
+    - Organization Member
+  ns1:
+    role: admin
+  pagerduty:
+    role: user
