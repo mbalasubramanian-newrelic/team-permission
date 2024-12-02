@@ -1,0 +1,44 @@
+team_store_id: f373c757-e8df-4302-ae07-9642fbf74097
+permissions:
+  ldap:
+    app_users: []
+    groups: []
+  shell_access: false
+  vault: false
+  vpn: false
+  aws:
+    iam:
+    - accounts:
+        ids:
+        - prod-apps
+        - prod-services
+      roles:
+        predefined:
+        - NRReadOnly
+  azure:
+    rbac:
+    - subscriptions:
+        ids:
+        - prod-apps
+        - prod-services
+        roles:
+          built-in:
+          - Contributor
+  gcp:
+    rbac:
+    - projects:
+        ids:
+        - 0123456789
+        roles:
+          built-in:
+          - Editor
+  cloudflare:
+    roles:
+    - Analytics
+  mongodb:
+    role:
+    - Organization Member
+  ns1:
+    role: admin
+  pagerduty:
+    role: user
