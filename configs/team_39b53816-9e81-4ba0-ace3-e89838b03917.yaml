@@ -1,0 +1,42 @@
+team_store_id: '1010101010'
+permissions:
+  ldap:
+    app_users: []
+    groups: []
+  shell_access: false
+  vault: false
+  vpn: false
+  aws:
+    iam:
+    - accounts:
+        ids:
+        - 0123456789
+      roles:
+        predefined:
+        - NRReadOnly
+  azure:
+    rbac:
+    - subscriptions:
+        ids:
+        - d3154712-2e0f-4097-836d-18f0d32b3d8c
+        roles:
+          built-in:
+          - Contributor
+  gcp:
+    rbac:
+    - projects:
+        ids:
+        - 0123456789
+        roles:
+          built-in:
+          - Editor
+  cloudflare:
+    roles:
+    - Analytics
+  mongodb:
+    role:
+    - Organization Member
+  ns1:
+    role: admin
+  pagerduty:
+    role: user
