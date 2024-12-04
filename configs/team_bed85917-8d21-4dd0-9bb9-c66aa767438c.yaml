@@ -1,0 +1,8 @@
+team_store_id: b763e934-a6f0-46b5-b98f-2a7d322a8352
+permissions:
+  ldap:
+    app_users: []
+    groups: []
+  shell_access: false
+  vault: false
+  vpn: false
