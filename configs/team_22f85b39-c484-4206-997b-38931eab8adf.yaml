@@ -1,0 +1,16 @@
+team_store_id: '3'
+permissions:
+  ldap:
+    app_users: []
+    groups: []
+  shell_access: false
+  vault: false
+  vpn: false
+  aws:
+    iam:
+    - accounts:
+        ids:
+        - stg-late-shift
+      roles:
+        predefined:
+        - NRReadOnly
