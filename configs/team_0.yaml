@@ -1,0 +1,5 @@
+permissions:
+  shell_access: false
+  vault: false
+  vpn: false
+team_store_id: '0'
