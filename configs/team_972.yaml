@@ -1,0 +1,6 @@
+name: Wizards OpenTelemetry
+permissions:
+  cloudflare:
+    role:
+    - Administrator Read Only
+team_store_id: 972
