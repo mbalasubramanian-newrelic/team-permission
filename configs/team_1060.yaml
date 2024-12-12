@@ -1,0 +1,164 @@
+name: Cross Pipelines
+permissions:
+  aws:
+    iam:
+      management:
+      - accounts:
+          workloads:
+          - interlinked
+          - telemetry-ingest
+          - kafka-enclave
+          - lift-shift
+          - entity-ingest
+          - entity-enclave
+        roles:
+          predefined:
+          - NRReadOnly
+          - EKS-ReadOnly
+      - accounts:
+          ids:
+          - 017663287629
+        roles:
+          predefined:
+          - NRReadOnly
+      production:
+      - accounts:
+          workloads:
+          - interlinked
+          - telemetry-ingest
+          - kafka-enclave
+          - lift-shift
+          - entity-ingest
+          - entity-enclave
+        roles:
+          predefined:
+          - NRReadOnly
+          - EKS-ReadOnly
+      staging:
+      - accounts:
+          workloads:
+          - interlinked
+          - telemetry-ingest
+          - kafka-enclave
+          - lift-shift
+          - entity-ingest
+          - entity-enclave
+        roles:
+          predefined:
+          - NRReadOnly
+          - EKS-ReadOnly
+      test:
+      - accounts:
+          ids:
+          - '251914514656'
+          workloads:
+          - interlinked
+          - telemetry-ingest
+          - kafka-enclave
+          - lift-shift
+          - entity-ingest
+          - entity-enclave
+        roles:
+          predefined:
+          - NRPowerUser
+          - EKS-Dev
+          - EKS-ReadOnly
+  azure:
+    rbac:
+    - subscriptions:
+        roles:
+          built-in:
+          - Contributor
+        workloads:
+        - telemetry-ingest
+  gcp:
+    rbac:
+    - projects:
+        roles:
+          built-in:
+          - editor
+        workloads:
+        - telemetry-ingest
+  ldap:
+    groups:
+    - developer
+    - cf_registry_access
+    - core_data_platform
+    - k8s_devs
+  ns1:
+    role: user
+  pagerduty:
+    role: user
+  shell_access: true
+  vault:
+    policy:
+      rules:
+      - capabilities:
+        - create
+        - read
+        - list
+        - update
+        - delete
+        path: containers/teams/xpipes/*
+      - capabilities:
+        - create
+        - read
+        - list
+        - update
+        - delete
+        path: containers/teams/nrsp/*
+      - capabilities:
+        - read
+        - list
+        path: containers/teams/ddt/*
+      - capabilities:
+        - create
+        - read
+        - list
+        - update
+        - delete
+        path: discovery/*
+      - capabilities:
+        - create
+        - read
+        - list
+        - update
+        - delete
+        path: terraform/xpipes/*
+      - capabilities:
+        - create
+        - read
+        - list
+        - update
+        - delete
+        path: terraform/nrsp/*
+      - capabilities:
+        - read
+        - list
+        path: terraform/ddt/*
+      - capabilities:
+        - create
+        - read
+        - list
+        - update
+        - delete
+        path: shared/+/xpipes/*
+      - capabilities:
+        - create
+        - read
+        - list
+        - update
+        - delete
+        path: shared/+/+/xpipes/*
+      - capabilities:
+        - create
+        - read
+        - list
+        - update
+        - delete
+        path: shared/+/nrsp/*
+      - capabilities:
+        - read
+        path: shared/+/artifactory/*
+  vpn: true
+team_store_id: 1060
