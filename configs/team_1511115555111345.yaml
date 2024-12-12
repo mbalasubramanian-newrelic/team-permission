@@ -1,0 +1,55 @@
+name: FPA
+permissions:
+  aws:
+    iam:
+    - accounts:
+        ids:
+        - 0123456789
+      roles:
+        predefined:
+        - NRReadOnly
+  azure:
+    rbac:
+    - subscriptions:
+        all: true
+        roles:
+          built-in:
+          - Reader
+          - Billing Reader
+          - Contributor
+    - roles:
+        built-in:
+        - Contributor
+      subscriptions:
+        ids:
+        - d3154712-2e0f-4097-836d-18f0d32b3d8c
+  cloudflare:
+    role:
+    - Administrator Read Only
+    - Billing
+    roles:
+    - Analytics
+  gcp:
+    rbac:
+    - projects:
+        ids:
+        - 0123456789
+      roles:
+        built-in:
+        - Editor
+  ldap:
+    app_users: []
+    groups:
+    - confluent_users
+    - ibmcloud
+  mongodb:
+    role:
+    - Organization Member
+  ns1:
+    role: admin
+  pagerduty:
+    role: user
+  shell_access: true
+  vault: true
+  vpn: true
+team_store_id: '1511115555111345'
