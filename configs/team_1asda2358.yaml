@@ -1,0 +1,28 @@
+name: APM Core
+permissions:
+  aws:
+    iam:
+      production:
+      - accounts:
+          ids:
+          - '765009900309'
+        roles:
+          predefined:
+          - NRReadOnly
+      test:
+      - accounts:
+          ids:
+          - '860020829621'
+        roles:
+          predefined:
+          - NRPowerUser
+  ldap:
+    groups:
+    - cf_registry_access
+    - developer
+    - team_apm_core
+  pagerduty:
+    role: user
+  shell_access: true
+  vpn: true
+team_store_id: 1asda2358
