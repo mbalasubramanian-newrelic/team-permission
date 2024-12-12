@@ -1,0 +1,345 @@
+name: Logging
+permissions:
+  aws:
+    iam:
+      management:
+      - accounts:
+          workloads:
+          - interlinked
+          - tools-production
+        roles:
+          predefined:
+          - EKS-ReadOnly
+      - accounts:
+          workloads:
+          - syslog-ingest
+          - telemetry-ingest
+          - metric-timeslice
+          - log-patterns
+          - general-purpose
+          - kafka-enclave
+          - lift-shift
+        roles:
+          predefined:
+          - EKS-ReadOnly
+          - NRReadOnly
+      - accounts:
+          ids:
+          - 017663287629
+        roles:
+          predefined:
+          - NRReadOnly
+      production:
+      - accounts:
+          workloads:
+          - interlinked
+          - tools-production
+        roles:
+          predefined:
+          - EKS-ReadOnly
+      - accounts:
+          workloads:
+          - syslog-ingest
+          - telemetry-ingest
+          - metric-timeslice
+          - log-patterns
+          - general-purpose
+          - kafka-enclave
+          - lift-shift
+        roles:
+          predefined:
+          - EKS-ReadOnly
+          - NRReadOnly
+      - accounts:
+          ids:
+          - '533243300146'
+          - '500752014769'
+        roles:
+          predefined:
+          - NRReadOnly
+      - accounts:
+          ids:
+          - '035007573400'
+          - '895102219545'
+        roles:
+          predefined:
+          - NRReadOnly
+      staging:
+      - accounts:
+          workloads:
+          - interlinked
+          - tools-production
+        roles:
+          predefined:
+          - EKS-ReadOnly
+      - accounts:
+          workloads:
+          - syslog-ingest
+          - telemetry-ingest
+          - metric-timeslice
+          - log-patterns
+          - general-purpose
+          - kafka-enclave
+          - lift-shift
+        roles:
+          predefined:
+          - EKS-ReadOnly
+          - NRReadOnly
+      - accounts:
+          ids:
+          - '707672555654'
+        roles:
+          predefined:
+          - NRReadOnly
+      test:
+      - accounts:
+          workloads:
+          - interlinked
+          - tools-production
+        roles:
+          predefined:
+          - EKS-Dev
+          - EKS-ReadOnly
+      - accounts:
+          workloads:
+          - syslog-ingest
+          - telemetry-ingest
+          - metric-timeslice
+          - log-patterns
+          - general-purpose
+          - kafka-enclave
+          - lift-shift
+        roles:
+          predefined:
+          - EKS-Dev
+          - EKS-ReadOnly
+          - NRPowerUser
+      - accounts:
+          ids:
+          - '463657938898'
+        roles:
+          predefined:
+          - NRPowerUser
+      - accounts:
+          ids:
+          - '864899866645'
+        roles:
+          predefined:
+          - NRAdmin
+  azure:
+    rbac:
+    - subscriptions:
+        ids:
+        - 4fa82ee4-8249-416f-a727-b68c7464116f
+        roles:
+          built-in:
+          - Owner
+  cell_programmatic_access:
+    custom:
+      policies:
+        inline: "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n  \
+          \    \"Sid\": \"LoggingTerraform\",\n      \"Effect\": \"Allow\",\n    \
+          \  \"Action\": [\n        \"s3:*\",\n        \"iam:*\",\n        \"ec2:*\"\
+          ,\n        \"eks:*\",\n        \"elasticloadbalancing:*\"\n      ],\n  \
+          \    \"Resource\": \"*\"\n    }\n  ]\n}\n"
+  cloudflare:
+    role:
+    - Administrator
+  gcp:
+    rbac:
+    - projects:
+        roles:
+          built-in:
+          - editor
+        workloads:
+        - telemetry-ingest
+  ldap:
+    groups:
+    - developer
+    - team_logging
+    - cf_registry_access
+    - k8s_devs
+    - confluent_users
+  ns1:
+    role: user
+  pagerduty:
+    role: user
+  shell_access: true
+  vault:
+    policy:
+      rules:
+      - capabilities:
+        - create
+        - read
+        - update
+        - delete
+        - list
+        path: containers/teams/logging/*
+      - capabilities:
+        - read
+        path: containers/teams/after/staging/nerd-graph/*
+      - capabilities:
+        - create
+        - read
+        - update
+        - delete
+        - list
+        path: shared/+/logging/*
+      - capabilities:
+        - create
+        - read
+        - update
+        - delete
+        - list
+        path: shared/+/confluent/logging/*
+      - capabilities:
+        - read
+        - list
+        path: shared/+/hypertext/*
+      - capabilities:
+        - read
+        - list
+        path: shared/+/artifact-registry/*
+      - capabilities:
+        - read
+        - list
+        path: shared/+/dredd/*
+      - capabilities:
+        - read
+        - list
+        path: shared/+/artifactory/*
+      - capabilities:
+        - read
+        - list
+        path: shared/+/jenkins/*
+      - capabilities:
+        - read
+        - list
+        path: shared/+/feature-flag-client/*
+      - capabilities:
+        - read
+        path: shared/eu-production/ibmcloud/OPENVPN_TLS_STATIC_KEY
+      - capabilities:
+        - create
+        - read
+        - update
+        - delete
+        - list
+        path: shared/+/otlp-ingest-monitoring/*
+      - capabilities:
+        - read
+        - list
+        path: shared/+/cats-sdk/*
+      - capabilities:
+        - create
+        - read
+        - update
+        - delete
+        - list
+        path: terraform/logging/*
+      - capabilities:
+        - read
+        - list
+        - update
+        path: terraform/maas/*
+      - capabilities:
+        - read
+        - list
+        path: terraform/rad/argo-terraform-runner/aws/*
+      - capabilities:
+        - read
+        - list
+        path: terraform/rad/argo-terraform-runner/aws-team-credentials/resource-provisioner-109/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/kafka-brokers/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/kafka-brokers-meta/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/kafka-brokers-double-dispatch/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/+/kafka-brokers/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/+/kafka-brokers-security-protocol/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/+/kafka-brokers-tls/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/+/kafka-brokers-tls-security-protocol/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/+/kafka-zookeeper/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/dirac-partitioner-meta/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/dirac-partitioner/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/dirac-double-dispatch/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/datacenter-featureflag-api/*
+      - capabilities:
+        - create
+        - read
+        - list
+        - update
+        path: discovery/+/backend-log-syslog-configuration-api/*
+      - capabilities:
+        - create
+        - read
+        - list
+        - update
+        path: discovery/+/logging-db/*
+      - capabilities:
+        - create
+        - read
+        - list
+        - update
+        path: discovery/+/syslog-configuration-db/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/authorization/*
+      - capabilities:
+        - read
+        - list
+        path: discovery/+/audit-event-receiver/*
+      - capabilities:
+        - create
+        - read
+        - update
+        - delete
+        - list
+        path: discovery/+/ng-backend-log-parser-api/*
+      - capabilities:
+        - create
+        - read
+        - update
+        - delete
+        - list
+        path: discovery/+/live-tail-log-streamer/*
+      - capabilities:
+        - read
+        path: discovery/+/*
+  vpn: true
+team_store_id: 109
