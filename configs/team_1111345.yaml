@@ -1,0 +1,70 @@
+name: Logging
+permissions:
+  aws:
+    iam:
+    - accounts:
+        ids:
+        - 0123456789
+      roles:
+        predefined:
+        - NRReadOnly
+  azure:
+    rbac:
+    - subscriptions:
+        ids:
+        - 4fa82ee4-8249-416f-a727-b68c7464116f
+        roles:
+          built-in:
+          - Owner
+    - roles:
+        built-in:
+        - Contributor
+      subscriptions:
+        ids:
+        - d3154712-2e0f-4097-836d-18f0d32b3d8c
+  cell_programmatic_access:
+    custom:
+      policies:
+        inline: "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n  \
+          \    \"Sid\": \"LoggingTerraform\",\n      \"Effect\": \"Allow\",\n    \
+          \  \"Action\": [\n        \"s3:*\",\n        \"iam:*\",\n        \"ec2:*\"\
+          ,\n        \"eks:*\",\n        \"elasticloadbalancing:*\"\n      ],\n  \
+          \    \"Resource\": \"*\"\n    }\n  ]\n}\n"
+  cloudflare:
+    role:
+    - Administrator
+    roles:
+    - Analytics
+  gcp:
+    rbac:
+    - projects:
+        roles:
+          built-in:
+          - editor
+        workloads:
+        - telemetry-ingest
+    - projects:
+        ids:
+        - 0123456789
+      roles:
+        built-in:
+        - Editor
+  ldap:
+    app_users: []
+    groups:
+    - developer
+    - team_logging
+    - cf_registry_access
+    - k8s_devs
+    - confluent_users
+  mongodb:
+    role:
+    - Organization Member
+  ns1:
+    role: admin
+  pagerduty:
+    role: user
+  shell_access: true
+  vault: true
+  vpn: true
+team_store_id: '1111345'
